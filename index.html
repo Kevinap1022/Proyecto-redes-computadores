@@ -1,90 +1,537 @@
+<!--
+    Portafolio · Redes de Computadores (UNIMINUTO)
+    ================================================
+    Página única (single-page) con secciones ancla. El menú de arriba solo
+    hace scroll a un id dentro de esta misma página (#semana1, #semana2...).
+
+    Cómo agregar una semana nueva:
+      1. Duplica un <section class="section week-section" id="semanaX"> completo.
+      2. Cambia el id, el texto de "Semana X · Sesión Y" y el título.
+      3. Dentro, cada <article class="premise-card"> es una premisa: edita
+         título, texto y agrega ahí mismo las evidencias reales (imágenes,
+         video embebido, enlaces a archivos, etc.) con HTML normal.
+      4. Agrega el enlace correspondiente en el <nav> (más abajo) apuntando a "#semanaX".
+
+    Estilos: style.css (con comentarios por sección).
+    Interactividad: script.js (con comentarios explicando cada función).
+    Ver README.md para instrucciones de cómo ejecutar el proyecto en local.
+-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio Redes de computadores</title>
+    <title>Portafolio · Redes de Computadores</title>
+    <meta name="description" content="Portafolio digital del curso Redes de Computadores — UNIMINUTO. Premisas, actividades y evidencias semanales.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <header>
-        <nav class="contenedorBarraNavegacion">
-            <div class="contenedorLogoTitulo">
-                <img src="/imagenes/logotipo.png" alt="logotipo">
-                <span><a href="/.">Portafolio</a></span>
+
+    <!-- NAV -->
+    <nav class="navbar navbar-expand-lg fixed-top app-navbar" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#inicio">
+                <img src="imagenes/logotipo.png" alt="Logotipo del portafolio" class="brand-logo">
+                <span>Portafolio</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+                aria-controls="navMenu" aria-expanded="false" aria-label="Abrir menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+                    <li class="nav-item"><a class="nav-link" href="#presentacion">Presentación</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#semana1">Semana 1</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#semana2">Semana 2</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#semana3">Semana 3</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#semana4">Semana 4</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#semana5">Entrega</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#nosotros">Grupo</a></li>
+                </ul>
             </div>
-            <ul class="contenedorEnlaces">
-                <li class="elementoLista"><a href="#">Semana1</a></li>
-                <li class="elementoLista"><a href="#">Semana2</a></li>
-                <li class="elementoLista"><a href="#">Semana3</a></li>
-                <li class="elementoLista"><a href="#">Semana4</a></li>
-                <li class="elementoLista"><a href="#">Semana5</a></li>
-                <li class="elementoLista    "><a href="#">SobreNosotros</a></li>
-            </ul>
-            <div class="iconoMenu">
-                <div class="linea-1 noAnimacion"></div>
-                <div class="linea-2 noAnimacion"></div>
-                <div class="linea-3 noAnimacion"></div>
-            </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
     <main>
-        <section class="contenedorInicio">
-            <div class="contenedorTextoInicio">
-                <h1 class="tituloPrincipal">Portafolio Redes de Computadores</h1>
-                <p class="textoInicio">El portafolio es una recopilación digital del trabajo, las reflexiones y las
-                    experiencias educativas de los estudiantes, reunidas en un formato estructurado y en línea
-                    personalizado por el estudiante, que puede compartirse con otros estudiantes y profesores.</p>
-            </div>
-            <div class="contenedorImagenInicio">
-                <img src="/imagenes/header.jpeg" alt="imagenInicio">
+
+        <!-- HERO -->
+        <section class="hero" id="inicio">
+            <div class="container text-center">
+                <p class="eyebrow reveal">UNIMINUTO · 2026-2</p>
+                <h1 class="hero-title reveal">Redes de<br>Computadores</h1>
+                <p class="hero-subtitle reveal">
+                    Portafolio digital de aprendizaje. Un registro semanal de premisas, actividades,
+                    reflexiones y evidencias construido por nuestro grupo a lo largo del curso.
+                </p>
+                <div class="hero-actions reveal">
+                    <a href="#presentacion" class="btn-apple btn-apple-primary">Ver presentación</a>
+                    <a href="#semana1" class="btn-apple btn-apple-ghost">Explorar semanas</a>
+                </div>
             </div>
         </section>
 
-        <div class="contenedorTituloSecciones">
-            <h2>Contenido</h2>
-        </div>
+        <!-- PRESENTACIÓN DEL CURSO -->
+        <section class="section section-alt" id="presentacion">
+            <div class="container">
+                <div class="section-header reveal">
+                    <p class="eyebrow">Sobre este portafolio</p>
+                    <h2>Presentación del curso</h2>
+                </div>
 
-        <section class="contenedorSeccion">
-            <div class="contenedorImagenSeccion">
-                <img src="/imagenes/multimodal.png" alt="multimodal">
-            </div>
-            <div class="contenedorTextoSeccion">
-                <h2>Premisas</h2>
-                <p>Para centrar nuestro aprendizaje y las evidencias de cada entrada, utilizamos premisas como guía.
-                    Responderemos a la premisa especificada en cada entrada de nuestro portafolio por medio de productos
-                    multimodales.</p>
+                <div class="row g-4 mb-5">
+                    <div class="col-md-6 reveal">
+                        <div class="info-card h-100">
+                            <h3>¿Qué es este portafolio?</h3>
+                            <p>
+                                Es una cartera de aprendizaje digital (ePortfolio): una colección estructurada de
+                                trabajos, reflexiones y experiencias educativas del curso. No es solo un almacén de
+                                evidencias, sino un reflejo de nuestro proceso de aprendizaje como futuros ingenieros
+                                de sistemas.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 reveal">
+                        <div class="info-card h-100">
+                            <h3>¿Cómo está organizado?</h3>
+                            <p>
+                                Cada semana responde a una o varias <strong>premisas</strong> mediante un producto
+                                multimodal (texto, video, podcast, infografía, cómic, entre otros), acompañado de las
+                                evidencias que respaldan el aprendizaje logrado.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-3">
+                    <div class="col-6 col-md-3 reveal">
+                        <div class="stat-card">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">Integrantes por grupo</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 reveal">
+                        <div class="stat-card">
+                            <span class="stat-number">8</span>
+                            <span class="stat-label">Premisas · Corte 1</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 reveal">
+                        <div class="stat-card">
+                            <span class="stat-number">5</span>
+                            <span class="stat-label">Semanas · Corte 1</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 reveal">
+                        <div class="stat-card">
+                            <span class="stat-number">18 sep</span>
+                            <span class="stat-label">Entrega #1</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="contenedorSeccion">
-            <div class="contenedorTextoSeccion">
-                <h2>Descripción</h2>
-                <p>Es una breve descripción que incluye los contenidos, reflexiones, actitudes, disposiciones,
-                    habilidades, etc., en los que se ha trabajado y que cuentan como aprendizaje en el periodo dado.</p>
-            </div>
-            <div class="contenedorImagenSeccion">
-                <img src="/imagenes/descripcion.png" alt="descripcion">
+        <!-- SEMANA 1 -->
+        <section class="section week-section" id="semana1">
+            <div class="container">
+                <div class="section-header reveal">
+                    <p class="eyebrow">Semana 1 · Sesión 2</p>
+                    <h2>Redes que transforman instituciones</h2>
+                </div>
+
+                <div class="row g-4">
+                    <!-- Premisa 1 -->
+                    <div class="col-lg-6 reveal">
+                        <article class="premise-card h-100">
+                            <span class="premise-tag">Premisa 1</span>
+                            <h3>Una red no es solo conectar dispositivos</h3>
+                            <p class="premise-lead">Caso: la transformación digital de la Institución Educativa Nuevo Horizonte.</p>
+                            <p>
+                                La institución cuenta con ~800 estudiantes, 60 docentes y 30 funcionarios
+                                administrativos, distribuidos en tres bloques (aulas, laboratorios/biblioteca y
+                                administración), con problemas de conectividad, congestión en los laboratorios,
+                                necesidad de compartir información de forma segura, planes de IoT y cámaras de
+                                seguridad, y una proyección de crecimiento a futuro.
+                            </p>
+                            <h4>Actividad</h4>
+                            <p>
+                                Como equipo de ingeniería, diseñar una propuesta inicial de red: diagnóstico,
+                                clasificación de la red (con justificación), diseño de la topología física o lógica y
+                                justificación del tipo de red, topología, relación funcional, tecnología de
+                                transmisión y medios de conexión. Incluye una proyección a futuro sobre el
+                                crecimiento de la institución.
+                            </p>
+                            <p class="product-note"><strong>Producto multimodal:</strong> diagrama de red +
+                                video / podcast / cómic para la proyección.</p>
+
+                        </article>
+                    </div>
+
+                    <!-- Premisa 2 -->
+                    <div class="col-lg-6 reveal">
+                        <article class="premise-card h-100">
+                            <span class="premise-tag">Premisa 2</span>
+                            <h3>Internet: ¿una solución tecnológica que transformó la sociedad?</h3>
+                            <p class="premise-lead">A partir del documental <em>Lo and Behold: El Inicio del Internet</em>.</p>
+                            <p>
+                                Internet fue creado para conectar sistemas y compartir información, pero terminó
+                                transformando la forma en que estudiamos, trabajamos, nos comunicamos y nos
+                                relacionamos.
+                            </p>
+                            <h4>Actividad</h4>
+                            <p>
+                                Analizar si la evolución de Internet ha generado más oportunidades que riesgos para
+                                la sociedad, relacionando lo observado con los conceptos de redes, comunicación,
+                                evolución del Internet e impacto social.
+                            </p>
+                            <p class="product-note"><strong>Producto multimodal:</strong> video, podcast, cómic,
+                                historieta, novela gráfica, video ensayo o micro documental.</p>
+
+                        </article>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="contenedorSeccion">
-            <div class="contenedorImagenSeccion">
-                <img src="/imagenes/evidencia.png" alt="evidencia">
+        <!-- SEMANA 2 -->
+        <section class="section section-alt week-section" id="semana2">
+            <div class="container">
+                <div class="section-header reveal">
+                    <p class="eyebrow">Semana 2 · Sesión 4</p>
+                    <h2>Simular, equivocarse y aprender</h2>
+                </div>
+
+                <div class="row g-4">
+                    <!-- Premisa 3 -->
+                    <div class="col-lg-6 reveal">
+                        <article class="premise-card h-100">
+                            <span class="premise-tag">Premisa 3</span>
+                            <h3>¿Qué pasaría si pudieras equivocarte sin consecuencias?</h3>
+                            <p class="premise-lead">Simulación de redes en Cisco Packet Tracer.</p>
+                            <p>
+                                En ingeniería muchas decisiones deben probarse antes de implementarse en un entorno
+                                real. Packet Tracer permite construir redes virtuales, configurar dispositivos,
+                                probar conexiones y analizar errores.
+                            </p>
+                            <h4>Actividad</h4>
+                            <p>
+                                Plantear una situación, construirla en Packet Tracer y experimentar con diferentes
+                                alternativas: ¿qué problema se quería solucionar?, ¿qué configuración se realizó?,
+                                ¿qué ocurrió cuando algo salió mal?, ¿cómo se identificó y corrigió el error?, ¿qué se
+                                aprendió?
+                            </p>
+                            <p class="product-note"><strong>Producto multimodal:</strong> mapa conceptual,
+                                infografía comparativa, ensayo visual, cuadro comparativo, narrativa o video.</p>
+
+                        </article>
+                    </div>
+
+                    <!-- Premisa 4 -->
+                    <div class="col-lg-6 reveal">
+                        <article class="premise-card h-100">
+                            <span class="premise-tag">Premisa 4</span>
+                            <h3>Una red que funciona… ¿es necesariamente una buena red?</h3>
+                            <p class="premise-lead">Más allá de la conectividad básica.</p>
+                            <p>
+                                Una red puede permitir que todos se conecten a Internet y aun así tener problemas de
+                                velocidad, seguridad, disponibilidad o administración.
+                            </p>
+                            <h4>Actividad</h4>
+                            <p>
+                                Desde el rol de futuro ingeniero de sistemas, analizar qué características debería
+                                tener una red para considerarse una buena solución tecnológica:
+                                <strong>conectividad, rendimiento, seguridad, disponibilidad, escalabilidad,
+                                administración y experiencia del usuario.</strong>
+                            </p>
+                            <p class="product-note"><strong>Producto multimodal:</strong> video tipo simulación
+                                empresarial, debate técnico grabado, infografía interactiva, podcast técnico o
+                                estudio de caso dramatizado.</p>
+
+                            <!--
+                                Presentación de Genially:
+                                1. En Genially, abre tu presentación y da clic en "Compartir" -> pestaña "Insertar".
+                                2. Copia la URL que aparece ahí (algo como https://view.genially.com/XXXXXXXXXXXX).
+                                3. Pégala abajo reemplazando el src de este iframe.
+                                El div "embed-responsive" solo hace que el iframe mantenga su proporción en
+                                cualquier tamaño de pantalla, sin deformarse.
+                            -->
+                            <div class="embed-responsive">
+                                <iframe
+                                    src="https://view.genially.com/6aa2a7fcec765bb711bf3eeb"
+                                    title="Presentación Genially — Premisa 4"
+                                    allow="fullscreen"
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                        </article>
+                    </div>
+                </div>
             </div>
-            <div class="contenedorTextoSeccion">
-                <h2>Apuntes y evidencia</h2>
-                <p>La evidencia es todo lo que respalda el aprendizaje que hemos descrito y adjuntamos al portafolio en
-                    cada entrada. (Vídeos, fotos de tus apuntes, dibujos, archivos de audio, etc).</p>
+        </section>
+
+        <!-- SEMANA 3 -->
+        <section class="section week-section" id="semana3">
+            <div class="container">
+                <div class="section-header reveal">
+                    <p class="eyebrow">Semana 3 · Sesión 6</p>
+                    <h2>El viaje de un dato</h2>
+                </div>
+
+                <div class="row g-4">
+                    <!-- Premisa 5 -->
+                    <div class="col-lg-6 reveal">
+                        <article class="premise-card h-100">
+                            <span class="premise-tag">Premisa 5</span>
+                            <h3>El viaje invisible de un dato</h3>
+                            <p class="premise-lead">Detrás de presionar “Enviar”.</p>
+                            <p>
+                                Cada mensaje, videollamada, video o transacción bancaria implica una compleja
+                                interacción entre capas y protocolos.
+                            </p>
+                            <h4>Actividad</h4>
+                            <p>
+                                Seleccionar un servicio digital de uso frecuente (WhatsApp, YouTube, Netflix, Google
+                                Meet, Teams, banca virtual, videojuegos online, aula virtual, etc.) y reconstruir el
+                                recorrido de la información a través de las capas <strong>física, enlace de datos,
+                                red, transporte, sesión, presentación y aplicación</strong>, analizando qué pasaría si
+                                una de ellas dejara de cumplir su función. No debe limitarse a definir las capas.
+                            </p>
+                            <p class="product-note"><strong>Producto multimodal:</strong> animación, infografía,
+                                video, cómic o storytelling que represente visualmente el recorrido.</p>
+
+                            <!--
+                                Infografía (2 imágenes):
+                                1. Copia tus 2 imágenes a la carpeta imagenes/ (ej: premisa5-infografia-1.png).
+                                2. Reemplaza el "src" de cada <img> de abajo con el nombre real del archivo.
+                                3. Cambia el texto del "alt" y del <figcaption> por una descripción real
+                                   (el alt es importante para accesibilidad: describe qué muestra la imagen).
+                            -->
+                            <div class="evidence-images">
+                                <figure>
+                                    <button type="button" class="lightbox-trigger" data-bs-toggle="modal"
+                                        data-bs-target="#imageLightbox" data-img-src="imagenes/premisa5_1.jpeg"
+                                        data-img-alt="Infografía del viaje de un dato — parte 1 (capas física a red)">
+                                        <img src="imagenes/premisa5_1.jpeg"
+                                            alt="Infografía del viaje de un dato — parte 1 (capas física a red)">
+                                    </button>
+                                    <figcaption>Infografía — parte 1</figcaption>
+                                </figure>
+                                <figure>
+                                    <button type="button" class="lightbox-trigger" data-bs-toggle="modal"
+                                        data-bs-target="#imageLightbox" data-img-src="imagenes/premisa5_2.jpeg"
+                                        data-img-alt="Infografía del viaje de un dato — parte 2 (capas transporte a aplicación)">
+                                        <img src="imagenes/premisa5_2.jpeg"
+                                            alt="Infografía del viaje de un dato — parte 2 (capas transporte a aplicación)">
+                                    </button>
+                                    <figcaption>Infografía — parte 2</figcaption>
+                                </figure>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Premisa 6 -->
+                    <div class="col-lg-6 reveal">
+                        <article class="premise-card h-100">
+                            <span class="premise-tag">Premisa 6</span>
+                            <h3>Si Internet fuera una ciudad, ¿cómo funcionaría?</h3>
+                            <p class="premise-lead">Explicar redes con una analogía cotidiana.</p>
+                            <p>
+                                Imaginar que hay que explicarle a alguien sin formación en informática cómo funciona
+                                una red.
+                            </p>
+                            <h4>Actividad</h4>
+                            <p>
+                                Representar los modelos <strong>OSI y TCP/IP</strong> mediante una situación
+                                cotidiana (una ciudad, una empresa de mensajería, un restaurante, un aeropuerto, un
+                                sistema de transporte, una oficina postal, etc.) sin perder el rigor técnico: la
+                                analogía debe terminar relacionándose con los conceptos técnicos reales.
+                            </p>
+                            <p class="product-note"><strong>Producto multimodal:</strong> pitch técnico tipo Shark
+                                Tank, maqueta digital explicada, animación del diseño, simulación con justificación
+                                profesional, infografía interactiva, mapa conceptual narrado o reel educativo.</p>
+
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEMANA 4 -->
+        <section class="section section-alt week-section" id="semana4">
+            <div class="container">
+                <div class="section-header reveal">
+                    <p class="eyebrow">Semana 4 · Sesión 8</p>
+                    <h2>Dependencia digital e infraestructura</h2>
+                </div>
+
+                <div class="row g-4">
+                    <!-- Premisa 7 -->
+                    <div class="col-lg-6 reveal">
+                        <article class="premise-card h-100">
+                            <span class="premise-tag">Premisa 7</span>
+                            <h3>24 horas sin Internet… ¿qué tan dependientes somos?</h3>
+                            <p class="premise-lead">Cuando un protocolo fundamental desaparece.</p>
+                            <p>
+                                Imaginar que uno de los protocolos fundamentales de Internet (DNS, HTTP/HTTPS, BGP,
+                                UDP, SMTP, DHCP u otro visto en clase) deja de funcionar durante 24 horas.
+                            </p>
+                            <h4>Actividad</h4>
+                            <p>
+                                Analizar tres niveles: <strong>técnico</strong> (qué componentes y servicios se
+                                verían afectados), <strong>social</strong> (qué actividades cotidianas, educativas,
+                                empresariales o gubernamentales se alterarían) y <strong>profesional</strong> (qué
+                                debería hacer un ingeniero de sistemas para diagnosticar, responder y recuperar el
+                                servicio).
+                            </p>
+                            <p class="product-note"><strong>Producto multimodal:</strong> podcast, periódico
+                                digital, video de crisis, simulación o publicación de emergencia tecnológica.</p>
+
+                        </article>
+                    </div>
+
+                    <!-- Premisa 8 -->
+                    <div class="col-lg-6 reveal">
+                        <article class="premise-card h-100">
+                            <span class="premise-tag">Premisa 8</span>
+                            <h3>¿Por dónde viaja Internet?</h3>
+                            <p class="premise-lead">Medios de transmisión guiados y no guiados.</p>
+                            <p>
+                                Internet parece invisible, pero cada dato necesita un medio físico o inalámbrico
+                                para desplazarse: cables, conectores, señales, antenas.
+                            </p>
+                            <h4>Actividad</h4>
+                            <p>
+                                Elegir un entorno (campus universitario inteligente, zona rural, hospital digital,
+                                evento masivo o empresa multinacional) y proponer una combinación estratégica de
+                                medios guiados (cable de cobre, fibra óptica) y no guiados (Wi-Fi, radiofrecuencia,
+                                microondas, enlaces inalámbricos), definiendo medio principal, medio de respaldo y
+                                cómo garantizar disponibilidad y estabilidad.
+                            </p>
+                            <p class="product-note"><strong>Producto multimodal:</strong> pitch técnico tipo Shark
+                                Tank, maqueta digital explicada, animación del diseño, simulación con justificación
+                                profesional, infografía interactiva, mapa conceptual narrado o reel educativo.</p>
+
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEMANA 5 / ENTREGA -->
+        <section class="section submission-section" id="semana5">
+            <div class="container">
+                <div class="submission-card reveal">
+                    <span class="premise-tag premise-tag-light">Semana 5 · Sesión 12</span>
+                    <h2>Portfolio Submission #1</h2>
+                    <p class="submission-date">Plazo máximo: <strong>18 de septiembre</strong> · 11:59 p. m.</p>
+                    <p>
+                        Solo un integrante del grupo carga el portafolio en el Aula Virtual y, en el comentario de la
+                        entrega, incluye el nombre de todos los integrantes. La entrega debe incluir la lista de
+                        control (checklist) del corte diligenciada.
+                    </p>
+                    <ul class="submission-list">
+                        <li>Premisa de cada entrada tenida en cuenta.</li>
+                        <li>Aprendizajes registrados para este corte.</li>
+                        <li>Pruebas / evidencias que respaldan el proceso de aprendizaje.</li>
+                        <li>Lista de control adjunta.</li>
+                        <li>Portafolio enviado antes del plazo límite.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- GRUPO / SOBRE NOSOTROS -->
+        <section class="section section-alt" id="nosotros">
+            <div class="container">
+                <div class="section-header reveal">
+                    <p class="eyebrow">El equipo</p>
+                    <h2>Sobre nosotros</h2>
+                </div>
+
+                <!--
+                    Foto de cada integrante:
+                    1. Copia la foto a la carpeta imagenes/ (cuadrada de preferencia, se recorta sola en círculo).
+                    2. Reemplaza el "src" del <img> por el nombre real del archivo.
+                    Si el archivo no existe o no carga, se muestra automáticamente un
+                    círculo con la inicial del nombre (ver member-avatar-fallback en style.css
+                    y el bloque "Avatar de integrantes" en script.js).
+                -->
+                <div class="row g-4 justify-content-center">
+                    <div class="col-md-4 reveal">
+                        <div class="member-card">
+                            <div class="member-avatar">
+                                <img src="imagenes/Kevin.jpeg" alt="Foto de Kevin David Arias Perez" class="member-photo">
+                                <span class="member-avatar-fallback d-none">K</span>
+                            </div>
+                            <h3>Kevin David Arias Perez</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-4 reveal">
+                        <div class="member-card">
+                            <div class="member-avatar">
+                                <img src="imagenes/foto-integrante-2.jpg" alt="Foto de Joan Sebastian Mongui Paiva" class="member-photo">
+                                <span class="member-avatar-fallback d-none">J</span>
+                            </div>
+                            <h3>Joan Sebastian Mongui Paiva</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-4 reveal">
+                        <div class="member-card">
+                            <div class="member-avatar">
+                                <img src="imagenes/foto-integrante-3.jpg" alt="Foto de Integrante 3" class="member-photo">
+                                <span class="member-avatar-fallback d-none">3</span>
+                            </div>
+                            <h3>Integrante 3</h3>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
     </main>
+
+    <footer class="app-footer">
+        <div class="container">
+            <p>Portafolio Redes de Computadores · UNIMINUTO Bogotá · 2026-2</p>
+        </div>
+    </footer>
+
+    <!--
+        Lightbox de imágenes (un único modal reutilizado por todas las fotos/infografías).
+        Cualquier <button data-bs-toggle="modal" data-bs-target="#imageLightbox"
+        data-img-src="..." data-img-alt="..."> abre este modal; script.js lee esos
+        data-* y los pone dentro antes de mostrarlo. Así no hay que crear un modal
+        distinto por cada imagen del sitio.
+    -->
+    <div class="modal fade" id="imageLightbox" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageLightboxLabel">Vista previa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="" alt="" id="imageLightboxImg">
+                </div>
+                <div class="modal-footer">
+                    <a href="#" target="_blank" rel="noopener" id="imageLightboxOpenLink" class="btn-apple btn-apple-ghost btn-apple-small">
+                        Abrir imagen en pestaña nueva ↗
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
-
-<script src="script.js"></script>
