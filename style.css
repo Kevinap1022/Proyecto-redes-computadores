@@ -293,6 +293,14 @@ p {
     color: #fff;
 }
 
+/* Insignia para marcar la premisa hecha con IA (o, con otra variante de
+   color, la premisa en inglés) — se pone junto al "premise-tag" normal. */
+.premise-tag-ai {
+    background: rgba(124, 58, 237, 0.1);
+    color: #7c3aed;
+    margin-left: 0.5rem;
+}
+
 .premise-card h3 {
     font-size: 1.35rem;
     margin-bottom: 0.5rem;
@@ -353,10 +361,69 @@ p {
     border: 0;
 }
 
-/* Par de imágenes (infografía en 2 partes, evidencias fotográficas, etc.) */
+/* Modificador para video horizontal (YouTube, Vimeo): proporción 16:9 real,
+   en vez del 66% por defecto pensado para presentaciones más verticales. */
+.embed-responsive-16x9 {
+    padding-bottom: 56.25%;
+}
+
+/* Tarjeta "abrir externamente": para plataformas que no dejan incrustarse en
+   un iframe (Canva, por ejemplo bloquea esto por seguridad). Es un enlace
+   normal con pinta de reproductor, que abre el contenido en pestaña nueva. */
+.external-embed-card {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem 1.3rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    background: var(--bg-alt);
+    text-decoration: none;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.external-embed-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.external-embed-icon {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.external-embed-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.external-embed-text strong {
+    color: var(--text);
+    font-size: 0.96rem;
+}
+
+.external-embed-text span {
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Galería de imágenes (infografía en varias partes, fotos de apuntes, evidencias
+   de laboratorio, etc.). auto-fit + minmax hace que se acomode solo en 2, 3, 4
+   o más columnas según el ancho disponible, sin tener que fijar un número. */
 .evidence-images {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 0.9rem;
     margin-top: 1.5rem;
 }
@@ -423,10 +490,26 @@ p {
     text-align: center;
 }
 
-@media (max-width: 575px) {
-    .evidence-images {
-        grid-template-columns: 1fr;
-    }
+/* ---------- Resumen de la entrada (Aprendizajes + Pruebas por semana) ---------- */
+.entry-summary {
+    margin-top: 2rem;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2.2rem;
+}
+
+.entry-summary h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.7rem;
+}
+
+.entry-summary h3:not(:first-child) {
+    margin-top: 1.8rem;
+}
+
+.entry-summary p {
+    font-size: 0.96rem;
 }
 
 /* ---------- Lightbox (modal de imágenes) ---------- */
@@ -492,6 +575,69 @@ p {
     font-size: 0.92rem;
 }
 
+/* ---------- Lista de control ---------- */
+.checklist-table-wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.checklist-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.checklist-table th,
+.checklist-table td {
+    padding: 1rem 1.3rem;
+    text-align: left;
+    font-size: 0.94rem;
+}
+
+.checklist-table thead th {
+    background: var(--bg-alt);
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.checklist-table th.text-center {
+    text-align: center;
+}
+
+.checklist-table tbody td {
+    color: var(--text);
+    border-top: 1px solid var(--border);
+}
+
+.checklist-table tbody tr:first-child td {
+    border-top: none;
+}
+
+.checklist-table td:not(:first-child) {
+    width: 70px;
+    text-align: center;
+}
+
+.checklist-yes {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 575px) {
+    .checklist-table th,
+    .checklist-table td {
+        padding: 0.8rem;
+        font-size: 0.85rem;
+    }
+}
+
 /* ---------- Group ---------- */
 .member-card {
     background: #fff;
@@ -508,20 +654,20 @@ p {
    la inicial en su lugar. */
 .member-avatar {
     position: relative;
-    width: 88px;
-    height: 88px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     background: var(--bg-alt);
     color: var(--accent);
     font-weight: 700;
-    font-size: 1.6rem;
+    font-size: 3.4rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 1.1rem;
+    margin: 0 auto 1.2rem;
     overflow: hidden;
-    border: 3px solid #fff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 5px solid #fff;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
 }
 
 .member-photo {
