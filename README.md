@@ -11,11 +11,12 @@ archivos que cualquier navegador puede abrir.
 
 ```
 .
-├── index.html      # Todo el contenido y la estructura de la página (una sola página, con secciones ancla)
-├── style.css       # Estilos visuales propios (colores, tipografía, tarjetas, animaciones)
-├── script.js       # Interactividad: animaciones al hacer scroll, menú móvil, uploader de evidencias
-├── imagenes/       # Íconos e imágenes usados en el sitio
-└── .vscode/        # Configuración del editor (opcional)
+├── index.html          # Todo el contenido y la estructura de la página (una sola página, con secciones ancla)
+├── style.css           # Estilos visuales propios (colores, tipografía, tarjetas, animaciones)
+├── script.js           # Interactividad: animaciones al hacer scroll, menú móvil, lightbox de imágenes
+├── imagenes/           # Íconos e imágenes usados en el sitio
+│   └── apuntes/        # Fotos de apuntes/laboratorios usadas como "Pruebas del aprendizaje"
+└── .vscode/            # Configuración del editor (opcional)
 ```
 
 No hay carpetas de "páginas" separadas: cada semana es una sección dentro de
@@ -47,10 +48,9 @@ Y abre `http://localhost:8080` en el navegador.
 ### Opción C — Abrir el archivo directamente
 
 También puedes hacer doble click en `index.html` y abrirlo directo en el
-navegador (`file://...`). Funciona para ver el diseño, pero **el uploader de
-evidencias (vista previa de archivos) puede fallar** en algunos navegadores
-por restricciones de seguridad al abrir archivos locales sin servidor — por
-eso se recomienda la opción A o B.
+navegador (`file://...`). Funciona para ver el diseño, pero por restricciones
+de seguridad del navegador al abrir archivos locales sin servidor, se
+recomienda la opción A o B para probar todo con normalidad.
 
 ## Cómo editar el contenido
 
@@ -59,16 +59,31 @@ eso se recomienda la opción A o B.
   `<article class="premise-card">`.
 - **Agregar una semana nueva**: hay instrucciones paso a paso en el comentario
   al inicio de `index.html`.
-- **Integrantes del grupo**: sección `id="nosotros"` al final de `index.html`
-  (actualmente con datos de ejemplo "Integrante 1/2/3").
+- **Aprendizajes + Pruebas del aprendizaje**: van UNA vez por semana (no por
+  premisa), en el bloque `<div class="entry-summary">` que está después de las
+  dos tarjetas de premisa de cada semana.
+- **Integrantes del grupo**: sección `id="nosotros"` al final de `index.html`.
+  Cada integrante tiene una foto (`<img class="member-photo">`) con respaldo
+  automático a un círculo con su inicial si la foto no existe o falla.
 - **Colores y tipografía**: variables al inicio de `style.css` (bloque `:root`).
-- **Evidencias (fotos, videos, PDFs)**: se agregan directo en el HTML de cada
-  premisa, dentro de su `<article class="premise-card">`:
-  1. Copiar el archivo real a la carpeta `imagenes/` (o crear una carpeta
-     `evidencias/`).
-  2. Agregar una etiqueta `<img src="imagenes/tu-archivo.jpg" alt="...">`,
-     un `<video controls src="...">`, o un enlace `<a href="...">` de
-     descarga, apuntando a ese archivo.
+- **Evidencias — fotos** (infografías, apuntes, laboratorios): se agregan con
+  el patrón `<figure><button class="lightbox-trigger" data-bs-toggle="modal"
+  data-bs-target="#imageLightbox" data-img-src="..." data-img-alt="..."><img
+  src="..." alt="..."></button><figcaption>...</figcaption></figure>` dentro
+  de un `<div class="evidence-images">`. Al hacer clic se abren en grande
+  (lightbox) con opción de abrir en pestaña nueva. Busca "evidence-images" en
+  `index.html` para copiar el patrón completo.
+- **Evidencias — video/presentación embebida** (YouTube, Genially, y
+  similares que SÍ permiten incrustarse): un `<div class="embed-responsive">`
+  con un `<iframe>` adentro. Agrega la clase extra `embed-responsive-16x9`
+  si es un video horizontal tipo YouTube.
+- **Evidencias — video/presentación que NO se puede incrustar** (Canva, por
+  ejemplo, bloquea esto por su propia política de seguridad): usa la tarjeta
+  `<a class="external-embed-card" href="..." target="_blank" rel="noopener">`
+  en vez de un iframe — abre el contenido en una pestaña nueva. Si al usar un
+  iframe con un enlace nuevo el recuadro queda en blanco, revisa la consola
+  del navegador: un error de tipo "Content Security Policy... frame-ancestors"
+  confirma que esa plataforma bloquea el iframe, y hay que usar esta tarjeta.
 
 ## Buenas prácticas aplicadas
 
